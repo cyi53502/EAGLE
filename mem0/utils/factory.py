@@ -3,6 +3,7 @@ import inspect
 from typing import Dict, Optional, Union
 
 from mem0.configs.embeddings.base import BaseEmbedderConfig
+from mem0.configs.embeddings.kylin import KylinEmbeddingConfig
 from mem0.configs.llms.anthropic import AnthropicConfig
 from mem0.configs.llms.aws_bedrock import AWSBedrockConfig
 from mem0.configs.llms.azure import AzureOpenAIConfig
@@ -58,6 +59,7 @@ class LlmFactory:
         "lmstudio": ("mem0.llms.lmstudio.LMStudioLLM", LMStudioConfig),
         "vllm": ("mem0.llms.vllm.VllmLLM", VllmConfig),
         "langchain": ("mem0.llms.langchain.LangchainLLM", BaseLlmConfig),
+        "noop": ("mem0.llms.noop.NoopLLM", BaseLlmConfig),
     }
 
     @classmethod
@@ -162,6 +164,11 @@ class EmbedderFactory:
         "langchain": "mem0.embeddings.langchain.LangchainEmbedding",
         "aws_bedrock": "mem0.embeddings.aws_bedrock.AWSBedrockEmbedding",
         "fastembed": "mem0.embeddings.fastembed.FastEmbedEmbedding",
+        "kylin": "mem0.embeddings.kylin.KylinEmbedding",
+    }
+
+    provider_to_config = {
+        "kylin": KylinEmbeddingConfig,
     }
 
     @classmethod
@@ -169,12 +176,12 @@ class EmbedderFactory:
         if provider_name == "upstash_vector" and vector_config and vector_config.enable_embeddings:
             return MockEmbeddings()
         class_type = cls.provider_to_class.get(provider_name)
-        if class_type:
-            embedder_instance = load_class(class_type)
-            base_config = BaseEmbedderConfig(**config)
-            return embedder_instance(base_config)
-        else:
+        if not class_type:
             raise ValueError(f"Unsupported Embedder provider: {provider_name}")
+        embedder_instance = load_class(class_type)
+        config_class = cls.provider_to_config.get(provider_name, BaseEmbedderConfig)
+        typed_config = config_class(**config) if isinstance(config, dict) else config
+        return embedder_instance(typed_config)
 
 
 class VectorStoreFactory:
@@ -204,6 +211,7 @@ class VectorStoreFactory:
         "neptune": "mem0.vector_stores.neptune_analytics.NeptuneAnalyticsVector",
         "turbopuffer": "mem0.vector_stores.turbopuffer.TurbopufferDB",
         "oracledb": "mem0.vector_stores.oracledb.OracleAIVectorSearch",
+        "kylin": "mem0.vector_stores.kylin.KylinVectorStore",
     }
 
     @classmethod

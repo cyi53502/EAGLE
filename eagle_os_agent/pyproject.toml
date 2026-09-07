@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eagle-os-agent"
+version = "0.1.0"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "sqlalchemy>=2.0.31",
+    "pydantic>=2.7.3",
+]
+
+[project.optional-dependencies]
+api = ["fastapi>=0.115", "uvicorn>=0.30"]
+test = ["pytest>=8.2.2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["eagle"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", ".."]
+
+[tool.ruff]
+line-length = 120

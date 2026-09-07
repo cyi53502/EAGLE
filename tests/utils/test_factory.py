@@ -4,7 +4,10 @@ from mem0.configs.llms.anthropic import AnthropicConfig
 from mem0.configs.llms.aws_bedrock import AWSBedrockConfig
 from mem0.configs.llms.base import BaseLlmConfig
 from mem0.configs.llms.openai import OpenAIConfig
-from mem0.utils.factory import LlmFactory
+from mem0.embeddings.kylin import KylinEmbedding
+from mem0.llms.noop import NoopLLM
+from mem0.utils.factory import EmbedderFactory, LlmFactory, VectorStoreFactory
+from mem0.vector_stores.kylin import KylinVectorStore
 
 
 def _capture_config(provider_name, config):
@@ -60,3 +63,42 @@ def test_dict_config_not_mutated_by_kwargs():
         LlmFactory.create("openai", config, api_key="secret")
 
     assert config == {"model": "gpt-4o-mini"}
+
+
+def test_kylin_embedder_factory_uses_provider_config():
+    client = Mock()
+
+    embedder = EmbedderFactory.create(
+        "kylin",
+        {"embedding_dims": 2, "client": client},
+        vector_config=None,
+    )
+
+    assert isinstance(embedder, KylinEmbedding)
+    assert embedder.client is client
+
+
+def test_kylin_vector_store_factory_uses_provider_config():
+    client = Mock()
+
+    vector_store = VectorStoreFactory.create(
+        "kylin",
+        {
+            "collection_name": "eagle",
+            "embedding_model_dims": 2,
+            "distance_metric": "vendor-cosine",
+            "score_semantics": "cosine_distance",
+            "client": client,
+        },
+    )
+
+    assert isinstance(vector_store, KylinVectorStore)
+    client.ensure_collection.assert_called_once_with(
+        name="eagle",
+        dimension=2,
+        metric="vendor-cosine",
+    )
+
+
+def test_noop_llm_factory_builds_guard_provider():
+    assert isinstance(LlmFactory.create("noop", {}), NoopLLM)
