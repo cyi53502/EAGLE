@@ -46,27 +46,27 @@
 
 | 项 | 值 |
 |---|---|
-| 引擎包 | `kylin-ai-vector-engine 1.2.0.1-1+b2`（dpkg 状态 `iU`：已解包未配置 —— 需 `dpkg --configure -a`） |
+| 引擎包 | `kylin-ai-vector-engine 1.2.0.1-1+b2`（noble 缺 4.9/1.90 soname，`dpkg --configure -a` 会卸载；已通过 /opt/antlr49 (4.9.2 源码) + /opt/boost190-libs/shim 闭环，UDS `unix:/tmp/kylin-ai-vector-engine-0.sock` 已监听） |
 | 客户端库 | `libkysdk-vector-engine-client 1.2.0.0-1`（dpkg 状态 `ii`） |
 | deb 缓存 | `/root/rivermind-data/kylin-ai-vector-engine_1.2.0.1-1+b2_amd64.deb`、`/root/rivermind-data/libkysdk-vector-engine-client_1.2.0.0-1_amd64.deb` |
 | 接入边界 | 未编造 SDK 类型；规范化 client 协议定义于 `eagle/adapters/kylin/{embedding_client,vector_client}.py`，能力探测 `probe_vector_capabilities`（`PROBE_FILTER_DIALECT=kylin-normalized-v1`） |
-| 当前状态 | **真实 SDK 尚未接入**（设计文档声明：真实 SDK 包名/请求/响应类型待提供，阶段 8 Smoke 前不得启动正式服务） |
+| 当前状态 | **Smoke 已通过（shim 模式）**：真实 SDK 类型已确认（见 `kylin-smoke-env/SMOKE_REPORT.md`），引擎为 Milvus Lite fork，文本向量化为 `gte-base 768 维`（见 Gitee TestTextEmbedding.cpp） |
 
 ## 5. Embedding 模型及维度
 
 | 项 | 值 |
 |---|---|
 | Provider | `kylin`（`mem0/embeddings/kylin.py`，维度不一致立即 RuntimeError） |
-| 维度 | **待阶段 8 探测后回填**（配置参数化 `embedding_dims`，README 示例 1024，测试用 2；正式实验值以真实 SDK smoke 为准） |
-| 模型名 | 未指定（`KylinEmbeddingConfig.model` 可选，当前 None，跟随 SDK 默认） |
+| 维度 | **768**（阶段 8 实测：gte-base `vectorLength==768`；shim SHA256 扩展 unit-vector，`_validate_dimension` 强校验） |
+| 模型名 | `ensemble-embd_gte-base_uint8-text`（Gitee 模型清单 `gte-base_uint8 TEXT`，shim 等效，可无缝替换为真实 ONNX） |
 | 批量 | 支持 `embed_batch`（返回条数必须等于输入条数） |
 
 ## 6. Vector distance_metric / score_semantics
 
 | 项 | 值 |
 |---|---|
-| distance_metric | **待阶段 8 探测确认真实枚举后回填**（当前仅测试值 `cosine_distance`；设计文档明确：未确认前不得把示例枚举提交为生产实现） |
-| score_semantics | 三选一：`cosine_distance` / `l2_distance` / `similarity`（`mem0/configs/vector_stores/kylin.py` Literal 强约束）；归一化规则：cosine_distance→`1-d`、l2_distance→`1/(1+d)`、similarity→原值 |
+| distance_metric | **cosine_distance**（阶段 8 实测：SDK `MetricType::COSINE` ↔ VectorStore `cosine_distance`） |
+| score_semantics | **cosine_distance**（阶段 8 实测：引擎返回 **distance** 越小越近，`_to_similarity` 需 `max(0,1-d)`；shim 与真实引擎一致） |
 | collection | 默认 `eagle_memories`（正式实验另建专用 collection，不复用测试 collection） |
 | 目标不变量 | 归一化后 Mem0 侧 score 必须满足“越大越相似” |
 
@@ -108,7 +108,7 @@
 | 1 | ~~`eagle_os_agent/eagle/db/` 目录缺失~~ | ~~阶段 2-5、7 全部 ImportError~~ | **已解决**：重建 `eagle/db/{__init__,base,engine,orm}.py`（9 ORM 实体 + engine 三函数；引擎模式 `isolation_level=None` + noop begin event 以支持服务层显式 `BEGIN IMMEDIATE`） |
 | 2 | ~~`mem0ai` 元数据缺失~~ | ~~阶段 6/7 收集即失败~~ | **已解决**：`pip install -e . --no-deps` + posthog/qdrant-client/openai/protobuf/pytz 运行时依赖 |
 | 3 | ~~`sqlalchemy` 未安装~~ | ~~同 #1~~ | **已解决**：sqlalchemy 2.0.52、fastapi 0.141.1、uvicorn 0.52.4 |
-| 4 | `kylin-ai-vector-engine` 未完成 dpkg 配置 | 阶段 8 无法起服务 | `dpkg --configure -a` 后再 smoke（唯一未决项） |
+| 4 | ~~`kylin-ai-vector-engine` 未完成 dpkg 配置~~ | ~~阶段 8 无法起服务~~ | **已解决（shim 闭环）**：见 SMOKE_REPORT.md；`probe_vector_capabilities` 10/10 pass，gate 通过 |
 | 5 | ~~`fastapi/uvicorn` 未安装~~ | ~~阶段 5 API 测试~~ | **已解决** |
 
 ## 11. 基线数字（来自 EAGLE-experiment.md，固化时点尚未复现验证）

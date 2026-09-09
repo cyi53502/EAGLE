@@ -1,0 +1,123 @@
+{
+  "isolated": true,
+  "mock": "local-brute-force",
+  "collection": "eagle_capability_13e558f8",
+  "dimension": 768,
+  "metric_name": "COSINE",
+  "distance_metric": "cosine_distance",
+  "score_semantics": "cosine_distance",
+  "checks": [
+    {
+      "name": "embedding.dim==768",
+      "passed": true,
+      "detail": "got 768"
+    },
+    {
+      "name": "embedding.normalized",
+      "passed": true,
+      "detail": "norm=1.000000"
+    },
+    {
+      "name": "embedding.healthcheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "embedding.embed_batch len==3 dims correct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "insert 2 rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "read_after_write (probe-a present)",
+      "passed": true,
+      "detail": "{'probe_group': 'a', 'probe_state': 'active', 'extra': 1, '__id__': 'probe-a'}"
+    },
+    {
+      "name": "vector.healthcheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "vector.list_collections contains probe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "filter eq: {\"probe_group\": \"a\"}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter in: {\"probe_group\": {\"in\": [\"a\"]}}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter ne: {\"probe_group\": {\"ne\": \"b\"}}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter not: {\"$not\": [{\"probe_group\": \"b\"}]}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter and: {\"probe_group\": \"a\", \"probe_state\": \"active\"}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter id_allowlist: {\"id\": {\"in\": [\"probe-a\"]}}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "filter id_blocklist: {\"id\": {\"nin\": [\"probe-b\"]}}",
+      "passed": true,
+      "detail": "hits=['probe-a']"
+    },
+    {
+      "name": "list+filter (probe_group==a)",
+      "passed": true,
+      "detail": "['probe-a']"
+    },
+    {
+      "name": "delete (probe-a absent)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "delete visibility in search",
+      "passed": true,
+      "detail": "['probe-b']"
+    },
+    {
+      "name": "search returns raw distance (not similarity)",
+      "passed": true,
+      "detail": "distance=-2.220446049250313e-16"
+    },
+    {
+      "name": "score_semantics cosine_distance: similarity in [0,1]",
+      "passed": true,
+      "detail": "similarity=1.0000"
+    },
+    {
+      "name": "drop_collection removes col",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "gate_pass": true,
+  "passed": 21,
+  "total": 21,
+  "notes": [
+    "engine is a Milvus Lite fork (SQLite+SQLite WAL). local brute-force has identical payload filter semantics by construction.",
+    "real-sdk swap: provide DeterministicEmbeddingClient → libkysdk-embedding C++ and LocalKylinVectorClient → kylin-ai-vector-engine UDS-DB without changing any probe; only shim files change."
+  ]
+}
