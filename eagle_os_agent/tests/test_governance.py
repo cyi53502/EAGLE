@@ -1,8 +1,6 @@
 from dataclasses import replace
 
 import pytest
-from sqlalchemy import select
-
 from eagle.db.orm import (
     CandidateRecord,
     EpisodeRecord,
@@ -11,6 +9,8 @@ from eagle.db.orm import (
     KnowledgeRecord,
     PreferenceRecord,
 )
+from sqlalchemy import select
+
 from eagle.domain.enums import CandidateState, CandidateType, PreferenceHardness
 from eagle.domain.events import EpisodeInput, ExplicitPreferenceEvent, UserCorrectionEvent
 from eagle.domain.scene import Scene

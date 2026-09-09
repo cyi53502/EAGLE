@@ -1,9 +1,9 @@
 import asyncio
 
+from eagle.db.orm import EpisodeRecord
 from sqlalchemy import select
 
 from eagle.adapters.os_tools.executor import ToolExecutionContext, execute_tool
-from eagle.db.orm import EpisodeRecord
 from eagle.domain.scene import Scene
 from eagle.governance import GovernanceService
 

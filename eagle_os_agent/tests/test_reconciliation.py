@@ -1,9 +1,9 @@
 from datetime import timedelta
 
+from eagle.db.orm import IndexJobRecord, KnowledgeRecord, utc_now
 from sqlalchemy import select
 from test_governance import episode
 
-from eagle.db.orm import IndexJobRecord, KnowledgeRecord, utc_now
 from eagle.governance import GovernanceService
 from eagle.outbox.reconciliation import ReconciliationService
 

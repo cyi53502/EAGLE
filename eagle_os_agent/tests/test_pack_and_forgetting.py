@@ -1,9 +1,9 @@
 import pytest
+from eagle.db.orm import KnowledgeRecord, KnowledgeRevalidationRecord, PreferenceRecord
 from sqlalchemy import select
 from test_governance import episode
 
 from eagle.conflict.service import ConflictService
-from eagle.db.orm import KnowledgeRecord, KnowledgeRevalidationRecord, PreferenceRecord
 from eagle.domain.enums import PreferenceHardness
 from eagle.domain.events import ExplicitPreferenceEvent
 from eagle.domain.scene import Scene

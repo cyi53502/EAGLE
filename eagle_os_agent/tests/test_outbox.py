@@ -1,11 +1,11 @@
 from types import SimpleNamespace
 
 import pytest
+from eagle.db.orm import CandidateRecord, EpisodeRecord, EvidenceRecord, IndexJobRecord, KnowledgeRecord
 from sqlalchemy import select
 from test_governance import episode
 
 from eagle.adapters.mem0_gateway import Mem0Gateway
-from eagle.db.orm import CandidateRecord, EpisodeRecord, EvidenceRecord, IndexJobRecord, KnowledgeRecord
 from eagle.forgetting.service import ForgettingService
 from eagle.governance import GovernanceService
 from eagle.outbox.worker import IndexWorker

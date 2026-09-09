@@ -1,7 +1,7 @@
+from eagle.db.orm import IndexJobRecord, KnowledgeRecord
 from sqlalchemy import select
 from test_governance import episode
 
-from eagle.db.orm import IndexJobRecord, KnowledgeRecord
 from eagle.governance import GovernanceService
 from eagle.health import HealthService
 

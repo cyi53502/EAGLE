@@ -1,8 +1,8 @@
 from datetime import timedelta
 
 import pytest
-
 from eagle.db.orm import PreferenceRecord, utc_now
+
 from eagle.domain.scene import Scene
 from eagle.preference.resolver import PreferenceResolver, UnresolvedPreferenceConflict
 

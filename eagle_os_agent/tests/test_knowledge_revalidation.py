@@ -1,9 +1,9 @@
 from dataclasses import replace
 
+from eagle.db.orm import CandidateRecord, KnowledgeRecord, KnowledgeRevalidationRecord
 from sqlalchemy import select
 from test_governance import episode
 
-from eagle.db.orm import CandidateRecord, KnowledgeRecord, KnowledgeRevalidationRecord
 from eagle.domain.scene import Scene
 from eagle.governance import GovernanceService
 from eagle.pack.service import PackService
