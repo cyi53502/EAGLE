@@ -1,0 +1,18 @@
+{
+  "dataset": "eagle-gov",
+  "family_counts": {
+    "env_drift": 22,
+    "explicit_gate": 22,
+    "fallback_not_preference": 23,
+    "forgetting": 22,
+    "hard_constraint": 22,
+    "implicit_gate": 23,
+    "kk_conflict": 22,
+    "pk_visibility": 22,
+    "replay_idempotency": 22
+  },
+  "seed": 42,
+  "sha256": "51b25e270df1309aa57cd4683a9425a3ed533e3b71d0b1a8092d61380a4b8266",
+  "total": 200,
+  "version": "v1"
+}

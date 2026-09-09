@@ -1,0 +1,48 @@
+{
+  "dataset": "/root/rivermind-data/EAGLE/eagle_os_agent/../experiments/datasets/eagle-gov/v1.jsonl",
+  "seed": 42,
+  "aggregate": {
+    "cases_total": 200,
+    "cases_passed": 200,
+    "case_pass_rate": 1.0,
+    "by_family": {
+      "fallback_not_preference": {
+        "total": 23,
+        "passed": 23
+      },
+      "implicit_gate": {
+        "total": 23,
+        "passed": 23
+      },
+      "explicit_gate": {
+        "total": 22,
+        "passed": 22
+      },
+      "hard_constraint": {
+        "total": 22,
+        "passed": 22
+      },
+      "kk_conflict": {
+        "total": 22,
+        "passed": 22
+      },
+      "env_drift": {
+        "total": 22,
+        "passed": 22
+      },
+      "pk_visibility": {
+        "total": 22,
+        "passed": 22
+      },
+      "forgetting": {
+        "total": 22,
+        "passed": 22
+      },
+      "replay_idempotency": {
+        "total": 22,
+        "passed": 22
+      }
+    }
+  },
+  "failed_cases": []
+}

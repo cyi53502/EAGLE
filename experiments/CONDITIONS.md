@@ -84,9 +84,13 @@
 
 | 项 | 值 |
 |---|---|
-| 当前状态 | `EAGLE/evaluation/` 目录为空 —— **数据集尚未就位（阻塞阶段 9/11/12）** |
+| EAGLE-Gov v1 | **已就位（2026-09-09，本地闭环已通过）**：`experiments/datasets/eagle-gov/v1.jsonl`，200 条，sha256 `51b25e270df1309aa57cd4683a9425a3ed533e3b71d0b1a8092d61380a4b8266`，生成 `python experiments/datasets/eagle-gov/generate.py --seed 42`（deterministic，无 LLM/外部依赖）；本地闭环 200/200 pass（`runner.py`，stage-9 前置模式，SearchGateway 直接服务 SQLite 权威行） |
+| LongMemEval-V2 | 未拉取（阶段 8 麒麟 Smoke 通过后 `hf download mem0ai/longmemeval-v2`） |
+| LongMemEval | 未拉取（同上，`ulab-ai/longmemeval`） |
+| LoCoMo | 未拉取（同上，`snap-research/locomo`） |
+| OSWorld/openKylin 子集 | 未拉取（同上，`github.com/xlang-ai/OSWorld`，子集清单另记 `SUBSET.md`） |
 | 约定 | 数据集就位后在本节登记：名称、来源 URL/路径、下载日期、sha256、条数、切分比例、license |
-| 阶段 1-8 | 不依赖数据集，可先行 |
+| 阶段 1-8 | 不依赖外部数据集（EAGLE-Gov 已可先行） |
 
 ## 9. import stub 排除声明
 
@@ -97,16 +101,20 @@
 
 ## 10. 已知阻塞项（进入阶段 2 前必须解决）
 
+> 2026-09-09 更新：#1/#2/#3/#5 已解决，#4（麒麟 dpkg 配置）仍待处理 —— 阶段 8 前执行 `dpkg --configure -a`。
+
 | # | 阻塞 | 影响 | 处理 |
 |---|---|---|---|
-| 1 | `eagle_os_agent/eagle/db/` 目录缺失（git HEAD 无 `db/`，但 15+ 个模块 import `eagle.db.engine` / `eagle.db.orm`，ORM 实体含 EpisodeRecord/EvidenceRecord/CandidateRecord/PreferenceRecord/KnowledgeRecord/KnowledgeRevalidationRecord/IndexJobRecord/PKVisibilityRecord 及 `utc_now`） | 阶段 2-5、7 全部 ImportError；49 基线无法验证 | 依设计文档 §Schema 重建 `eagle/db/{__init__,engine,orm}.py` |
-| 2 | `mem0ai` 元数据缺失 | 阶段 6/7 收集即失败 | `pip install -e .`（仓库根） |
-| 3 | sqlalchemy 未安装 | 同 #1 | `pip install "sqlalchemy>=2.0.31" "pydantic>=2.7.3" pytest ruff` |
-| 4 | `kylin-ai-vector-engine` 未完成 dpkg 配置 | 阶段 8 无法起服务 | `dpkg --configure -a` 后再 smoke |
-| 5 | `fastapi/uvicorn` 未安装 | 阶段 5 API 测试 | `pip install -e "eagle_os_agent[api,test]"` |
+| 1 | ~~`eagle_os_agent/eagle/db/` 目录缺失~~ | ~~阶段 2-5、7 全部 ImportError~~ | **已解决**：重建 `eagle/db/{__init__,base,engine,orm}.py`（9 ORM 实体 + engine 三函数；引擎模式 `isolation_level=None` + noop begin event 以支持服务层显式 `BEGIN IMMEDIATE`） |
+| 2 | ~~`mem0ai` 元数据缺失~~ | ~~阶段 6/7 收集即失败~~ | **已解决**：`pip install -e . --no-deps` + posthog/qdrant-client/openai/protobuf/pytz 运行时依赖 |
+| 3 | ~~`sqlalchemy` 未安装~~ | ~~同 #1~~ | **已解决**：sqlalchemy 2.0.52、fastapi 0.141.1、uvicorn 0.52.4 |
+| 4 | `kylin-ai-vector-engine` 未完成 dpkg 配置 | 阶段 8 无法起服务 | `dpkg --configure -a` 后再 smoke（唯一未决项） |
+| 5 | ~~`fastapi/uvicorn` 未安装~~ | ~~阶段 5 API 测试~~ | **已解决** |
 
 ## 11. 基线数字（来自 EAGLE-experiment.md，固化时点尚未复现验证）
 
-- 全量本地回归基线：`49 passed`（阶段 7 目标）
-- Provider 契约基线：`13 passed`（阶段 6 目标）
-- 上述数字需在阻塞项 #1/#2/#3 解决后按顺序复现，实际计数与本节不符时以实测为准并在此更新。
+> 2026-09-09 14:30 复现完成：全量/ Provider 均通过汇总见 `experiments/GOV_HARNESS_REPORT.md`。
+
+- 全量本地回归基线：`49 passed`（阶段 7 目标）— **已复现 49 passed**
+- Provider 契约基线：`13 passed`（阶段 6 目标）— **已复现 13 passed**
+- EAGLE-Gov v1：200/200 pass（9 families，本地闭环无麒麟）— 见 `experiments/datasets/eagle-gov/v1.report.json`
