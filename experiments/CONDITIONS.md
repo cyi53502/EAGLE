@@ -50,6 +50,7 @@
 | 客户端库 | `libkysdk-vector-engine-client 1.2.0.0-1`（dpkg 状态 `ii`） |
 | deb 缓存 | `/root/rivermind-data/kylin-ai-vector-engine_1.2.0.1-1+b2_amd64.deb`、`/root/rivermind-data/libkysdk-vector-engine-client_1.2.0.0-1_amd64.deb` |
 | 接入边界 | 未编造 SDK 类型；规范化 client 协议定义于 `eagle/adapters/kylin/{embedding_client,vector_client}.py`，能力探测 `probe_vector_capabilities`（`PROBE_FILTER_DIALECT=kylin-normalized-v1`） |
+| 嵌入 SDK tier | `kylin-ai-runtime` D-Bus `com.kylin.AiRuntime.CoreTextEmbeddingService`（socket `/tmp/.kylin-ai-runtime-unix/<uid>/core-textembedding.sock`）；协议取自 kylin-ai-runtime / libkysdk-coreai-speech 开源实现（`Init→EmbeddingText→GetModelInfo`，引擎名 `Embedding`）。实现于 `eagle/adapters/kylin/kylin_sdk_embedding.py`，`KYLIN_EMBEDDING_SDK` 选路（0=禁用探测/1=强制/unset=自动），不可达→ONNX→shim 诚实兜底。本机未装运行时，标签 `onnx(fallback: no kylin-ai-runtime socket …)` |
 | 当前状态 | **Smoke 已通过（shim 模式）**：真实 SDK 类型已确认（见 `kylin-smoke-env/SMOKE_REPORT.md`），引擎为 Milvus Lite fork，文本向量化为 `gte-base 768 维`（见 Gitee TestTextEmbedding.cpp） |
 
 ## 5. Embedding 模型及维度
@@ -118,3 +119,27 @@
 - 全量本地回归基线：`49 passed`（阶段 7 目标）— **已复现 49 passed**
 - Provider 契约基线：`13 passed`（阶段 6 目标）— **已复现 13 passed**
 - EAGLE-Gov v1：200/200 pass（9 families，本地闭环无麒麟）— 见 `experiments/datasets/eagle-gov/v1.report.json`
+
+## P0 真实 ONNX 基线 (2026-09-11)
+
+| 项 | 值 |
+|---|---|
+| 文件 | `/root/rivermind-data/models/kylin-embedding/model.onnx` |
+| SHA256 | `dbfc7a6898c7c95fc53e52aaaf8302b5b2f5e8ec90d0eafa8e3d4acd26abef39` |
+| 大小 | 416M（fp32） |
+| 来源 | `thenlper/gte-base` → `onnx/model.onnx` |
+| 维度 | 768 |
+| 距离 | cosine_distance |
+| producer | pytorch 2.0.1, ir_version=6 |
+| 说明 | 替换原 `ensemble-embd_gte-base_uint8-text` shim；P0 基线为 fp32，后续量化版另记 |
+
+## P1 麒麟嵌入 SDK 适配层 (2026-09-11)
+
+| 项 | 值 |
+|---|---|
+| 目标 | 用真·麒麟 SDK（`kylin-ai-runtime` 嵌入服务）替代 ONNX 替身，真机运行时可达时 `backend=kylin-sdk` |
+| 客户端库 | `libkylin-coreai-embedding`（专有，archive.kylinos.cn 鉴权，不可获取）→ 改用 D-Bus socket 协议直连（协议取自开源 kylin-ai-runtime / libkysdk-coreai-speech） |
+| 传输 | `gdbus call --address unix:path=... --object-path /com/kylin/AiRuntime/CoreTextEmbeddingService --method com.kylin.AiRuntime.CoreTextEmbeddingService.{Init,EmbeddingText,GetModelInfo}` |
+| 兜底 | 运行时不可达 → ONNX gte-base（P0）→ shim；`backend` 全程诚实标签，绝不伪标 `kylin-sdk` |
+| 测试 | `tests/test_real_path.py` 新增 5 用例（mock 协议：正常/崩溃重连/无 socket/ONNX 兜底/SDK=0 旧路径），67/67 pass |
+| 本机状态 | 未装运行时 → `onnx(fallback: no kylin-ai-runtime socket …)`；真机需预装 `kylin-ai-runtime` 并启动嵌入服务 |

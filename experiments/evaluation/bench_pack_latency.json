@@ -1,0 +1,19 @@
+{
+  "seed": 42,
+  "total": 200,
+  "backend": {
+    "embedding": "onnx(fallback: no kylin-ai-runtime socket at /tmp/.kylin-ai-runtime-unix/0/core-textembedding.sock)",
+    "vector": "real"
+  },
+  "pack_latency_ms": {
+    "n": 200,
+    "p50": 105.46,
+    "p95": 201.14,
+    "p99": 350.53,
+    "mean": 94.07,
+    "max": 453.63
+  },
+  "embed_single_ms": 11.392,
+  "pass": true,
+  "out": "/root/rivermind-data/EAGLE/experiments/evaluation/bench_pack_latency.json"
+}

@@ -1,0 +1,63 @@
+{
+  "results": [
+    {
+      "name": "1-fallback-commits-and-packs",
+      "passed": true,
+      "detail": {
+        "r1_committed": [],
+        "r2_committed": [
+          "3bd31dfb-6119-41cc-ac0b-f1baf5080544"
+        ],
+        "knowledge_id": "3bd31dfb-6119-41cc-ac0b-f1baf5080544",
+        "mem0_id": "10fc6136-6fa6-4f64-a142-2541d304e904",
+        "job_state": "DONE",
+        "pack_hits": 1,
+        "env": "linux:noble:wps-1",
+        "linux": "Linux-5.15.0-161-generic-x86_64-with-glibc2.39"
+      }
+    },
+    {
+      "name": "2-hard-preference-filters-tools",
+      "passed": true,
+      "detail": {
+        "allowed_tools": [
+          "wps"
+        ],
+        "filtered": [
+          "wps"
+        ],
+        "env": "linux:noble:wps-1"
+      }
+    },
+    {
+      "name": "3-env-drift-revalidation",
+      "passed": true,
+      "detail": {
+        "home_env": "linux:noble:wps-1",
+        "drift_env": "linux:noble:wps-2",
+        "drift_hits": 0,
+        "home_hits": 1,
+        "revalidation_target": "linux:noble:wps-2",
+        "knowledge_status": "ACTIVE"
+      }
+    },
+    {
+      "name": "4-forget-and-worker-erases",
+      "passed": true,
+      "detail": {
+        "before_hits": 1,
+        "after_forget_hits": 0,
+        "after_worker_hits": 0,
+        "status_forgetting": "FORGETTING",
+        "status_final": "FORGOTTEN",
+        "mem0_before": "126c6587-fc45-4f38-8635-6184fc975015",
+        "vector_remaining": null,
+        "job_before": "PENDING",
+        "job_after": "DONE",
+        "env": "linux:noble:wps-1"
+      }
+    }
+  ],
+  "passed": 4,
+  "total": 4
+}

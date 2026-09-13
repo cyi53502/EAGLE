@@ -54,6 +54,10 @@ def _matches(payload, filters) -> bool:
 class ShimVectorClient:
     """Drops into the KylinVectorClient Protocol shape."""
 
+    # honest backend tag: reports stay truthful even when the client is
+    # constructed directly instead of through make_vector_client()
+    backend = "shim"
+
     def __init__(self):
         self._collections: dict[str, dict[str, ShimVectorRow]] = {}
         self._schemas: dict[str, dict] = {}

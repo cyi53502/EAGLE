@@ -1,26 +1,38 @@
 """
-Stage-8 SDK binding note — how to swap shims for the real SDKs.
+Real-vs-shim Kylin SDK binding note.
 
-Embedding (real):
-    from kylin_ai import TextEmbeddingSession  # libkysdk-embedding C++ wrapper
-    client = KylinEmbeddingClient(session=TextEmbeddingSession(...),
-                                  model_name="ensemble-embd_gte-base_uint8-text")
-    # or: from openkylin.kylin_embedding import KylinEmbedding
-In gate construction (eagle/bootstrap.py):
-    create_mem0_gateway(embedding_client=real_embedding_client, ...)
+The real vector path talks to the live ``kylin-ai-vector-engine`` daemon over
+its unix socket through the C ABI bridge ``libkylin_vec_bridge.so`` (see
+``kylin_vec_bridge.cpp``).  The installed C++ SDK headers are stale relative
+to the shipped ``libkysdk-vector-engine-client.so.1`` ABI, so the bridge
+constructs ``SearchArguments``/``QueryArguments`` at reverse-engineered real
+offsets instead of relying on the headers' inline constructors.
 
-Vector (real):
-    from kysdk_vector_engine_client import Database
-    db = Database.Create(); db.Connect(ConnectParam("eagle"))
-    vector_client = KylinVectorClient(db=db)
-    # or: wrap via eagle.adapters.kylin.vector_client adapter that delegates to Database
+Selection is env-driven and reported honestly via ``client.backend``:
 
-Both shims implement the two Kylin*Client Protocols verbatim, so the swap is
-a single injection-site change.
+  KYLIN_USE_SHIM (default "1"):
+    "0"           -> try real clients:
+                       embedding: RealEmbeddingClient -> backend "onnx" when
+                         KYLIN_EMBEDDING_MODEL points at existing gte-base
+                         weights, else "shim(fallback: <Exc>)"
+                       vector: RealVectorClient (bridge over KYLIN_VECTOR_UDS,
+                         default /tmp/kylin-ai-vector-engine-0.sock)
+                         -> backend "real", else "shim(fallback: <Exc>)"
+    anything else -> deterministic shims, backend "shim"
 
-Metrics / semantics confirmed by this stage:
+Factories (the injection sites):
+  make_embedding_client(dim)     eagle/adapters/kylin/real_embedding.py
+  make_vector_client()           eagle/adapters/kylin/real_vector.py
+  create_auto_gateway(...)       eagle/bootstrap.py -> Mem0Gateway whose
+                                 .backend == {"embedding": ..., "vector": ...}
+
+Harnesses/reports must surface ``gateway.backend`` so a shim run is never
+mislabeled as the real SDK.
+
+Metrics / semantics (verified empirically against the real engine):
   distance_metric = "cosine_distance"
-  score_semantics = "cosine_distance"   (similarity = max(0, 1 - distance))
+  score_semantics = "cosine_distance"  (engine returns cosine SIMILARITY, best
+                    first; we expose row.score = max(0, 1 - sim) = distance)
   embedding_model_dims = 768
 """
 

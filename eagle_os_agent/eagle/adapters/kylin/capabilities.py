@@ -8,6 +8,13 @@ class CapabilityReport:
     errors: tuple[tuple[str, str], ...]
 
 
+#: Capabilities the Mem0Gateway cannot operate without.  If the concrete
+#: client (shim or real) fails any of these, gateway construction fails fast.
+REQUIRED_FOR_GATEWAY = frozenset(
+    {"eq", "id_allowlist", "list_filter", "read_after_write", "delete"}
+)
+
+
 #: Normalized filter dialect used for probes; the concrete SDK client translates it.
 #: - {"field": value}                 -> equality
 #: - {"field": {"in": [...]}}         -> membership

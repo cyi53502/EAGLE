@@ -1,0 +1,10 @@
+{
+  "cases": 9,
+  "tp": 7,
+  "fp": 0,
+  "fn": 0,
+  "recall": 1.0,
+  "precision": 1.0,
+  "leak": 0,
+  "pass": true
+}

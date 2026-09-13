@@ -6,13 +6,16 @@ from eagle.domain.events import EpisodeInput
 
 class EpisodeCollector:
     def collect(self, session, episode: EpisodeInput, ingest_fingerprint: str) -> EpisodeRecord:
+        from eagle.sensitive.filter import scrub_text as _scrub  # lazy to avoid cycle
+
+        scrubbed_request, _ = _scrub(episode.request_text)
         record = EpisodeRecord(
             execution_id=episode.execution_id,
             ingest_fingerprint=ingest_fingerprint,
             user_id=episode.user_id,
             session_id=episode.session_id,
             scene_json=episode.scene.normalized(),
-            request_text=episode.request_text,
+            request_text=scrubbed_request,
             tool_name=episode.tool_name,
             arguments_digest=episode.arguments_digest,
             success=episode.success,

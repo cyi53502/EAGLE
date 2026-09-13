@@ -82,6 +82,18 @@ class ForgetPayload(BaseModel):
     memory_id: str = Field(min_length=1)
 
 
+class NLForgetPayload(BaseModel):
+    instruction: str = Field(min_length=1)
+
+
+class BehaviorIngestPayload(BaseModel):
+    events: list[dict]
+
+
+class ConfigIngestPayload(BaseModel):
+    events: list[dict]
+
+
 def create_app(*, session_factory, governance, pack, forgetting, gateway, authenticate) -> FastAPI:
     app = FastAPI(title="EAGLE OS Agent", version="0.1.0")
 
@@ -234,6 +246,59 @@ def create_app(*, session_factory, governance, pack, forgetting, gateway, authen
             status_code = 404 if str(error).endswith("not found") else 409
             raise HTTPException(status_code=status_code, detail=str(error)) from error
         return {"status": status}
+
+    @app.post("/memories/forget_nl")
+    def forget_nl(payload: NLForgetPayload, user_id: str = Depends(authenticated_user)):
+        from eagle.forgetting.nlu import resolve_targets
+        try:
+            with session_factory() as session:
+                targets = resolve_targets(payload.instruction, user_id, session)
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
+        forgotten: list[dict] = []
+        for mid in targets["P"]:
+            try:
+                forgetting.forget_preference(mid, user_id=user_id)
+                forgotten.append({"kind": "P", "id": mid, "status": "FORGOTTEN"})
+            except ValueError as e:
+                forgotten.append({"kind": "P", "id": mid, "error": str(e)})
+        for mid in targets["K"]:
+            try:
+                forgetting.forget_knowledge(mid, user_id=user_id)
+                forgotten.append({"kind": "K", "id": mid, "status": "FORGETTING"})
+            except ValueError as e:
+                forgotten.append({"kind": "K", "id": mid, "error": str(e)})
+        return {"targets": targets, "results": forgotten}
+
+    @app.post("/ingest/behavior")
+    def ingest_behavior(payload: BehaviorIngestPayload, user_id: str = Depends(authenticated_user)):
+        from eagle.multi_source.adapters import ingest_multi_source
+        for ev in payload.events:
+            ev.setdefault("user_id", user_id)
+        events = ingest_multi_source(payload.events, source_hint="behavior")
+        results = []
+        for ev in events:
+            try:
+                r = governance.record_episode(ev.episode, explicit_preferences=ev.explicit_prefs)
+                results.append({"episode_id": r.episode_id, "committed": list(r.committed_memory_ids)})
+            except ValueError as e:
+                results.append({"error": str(e)})
+        return {"ingested": len(results), "results": results}
+
+    @app.post("/ingest/config")
+    def ingest_config(payload: ConfigIngestPayload, user_id: str = Depends(authenticated_user)):
+        from eagle.multi_source.adapters import ingest_multi_source
+        for ev in payload.events:
+            ev.setdefault("user_id", user_id)
+        events = ingest_multi_source(payload.events, source_hint="manual")
+        results = []
+        for ev in events:
+            try:
+                r = governance.record_episode(ev.episode, explicit_preferences=ev.explicit_prefs)
+                results.append({"episode_id": r.episode_id, "committed": list(r.committed_memory_ids)})
+            except ValueError as e:
+                results.append({"error": str(e)})
+        return {"ingested": len(results), "results": results}
 
     @app.post("/preferences/{preference_id}/revoke")
     def revoke_preference(preference_id: str, user_id: str = Depends(authenticated_user)):

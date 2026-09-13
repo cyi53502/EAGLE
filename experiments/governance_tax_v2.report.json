@@ -1,0 +1,964 @@
+{
+  "conditions": {
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "broad_cases_per_seed": 200,
+    "recovery_cases_per_family": 50,
+    "recovery_cases_per_seed": 150,
+    "overall_cases_per_seed": 350,
+    "weighting": "case-weighted, predeclared 200 broad + 50 per recovery family"
+  },
+  "broad_by_seed": {
+    "42": {
+      "strict": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.59,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-hints": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.59,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-safe-fallback": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.59,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    },
+    "43": {
+      "strict": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.585,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-hints": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.585,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-safe-fallback": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.585,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    },
+    "44": {
+      "strict": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.605,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-hints": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.605,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      "two-tier-safe-fallback": {
+        "pref_false_promotion": 0.0,
+        "pref_precision": 1.0,
+        "knowledge_precision": 1.0,
+        "knowledge_recall": 0.6036,
+        "hard_violation": 0.0,
+        "stale_reuse": 0.0,
+        "conflict_resolved": 1.0,
+        "forget_leakage": 0.0,
+        "traceability": 1.0,
+        "task_success": 0.605,
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    }
+  },
+  "recovery_by_seed": {
+    "42": {
+      "strict": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.0,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.0,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-hints": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-safe-fallback": {
+        "summary": {
+          "safe_task_success": 1.0,
+          "missed_safe_action": 0.0,
+          "hint_assisted_safe_task_success": 1.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.3333,
+          "hint_authorized_after_confirmation": 0.3333,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 1.0,
+            "hint_authorized_after_confirmation": 1.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      }
+    },
+    "43": {
+      "strict": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.0,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.0,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-hints": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-safe-fallback": {
+        "summary": {
+          "safe_task_success": 1.0,
+          "missed_safe_action": 0.0,
+          "hint_assisted_safe_task_success": 1.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.3333,
+          "hint_authorized_after_confirmation": 0.3333,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 1.0,
+            "hint_authorized_after_confirmation": 1.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      }
+    },
+    "44": {
+      "strict": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.0,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.0,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-hints": {
+        "summary": {
+          "safe_task_success": 0.0,
+          "missed_safe_action": 1.0,
+          "hint_assisted_safe_task_success": 0.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.0,
+          "hint_authorized_after_confirmation": 0.0,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 0.0,
+            "missed_safe_action": 1.0,
+            "hint_assisted_safe_task_success": 0.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      },
+      "two-tier-safe-fallback": {
+        "summary": {
+          "safe_task_success": 1.0,
+          "missed_safe_action": 0.0,
+          "hint_assisted_safe_task_success": 1.0,
+          "hint_triggered_revalidation": 0.3333,
+          "hint_induced_unsafe_execution": 0.0,
+          "user_confirmation_requested": 0.3333,
+          "user_confirmation_accepted": 0.3333,
+          "hint_authorized_after_confirmation": 0.3333,
+          "hard_violation": 0.0,
+          "forget_leakage": 0.0,
+          "stale_reuse": 0.0
+        },
+        "by_family": {
+          "stale_hint_revalidation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 1.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "pending_hint_confirmation": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 1.0,
+            "user_confirmation_accepted": 1.0,
+            "hint_authorized_after_confirmation": 1.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          },
+          "empty_pack_safe_fallback": {
+            "safe_task_success": 1.0,
+            "missed_safe_action": 0.0,
+            "hint_assisted_safe_task_success": 1.0,
+            "hint_triggered_revalidation": 0.0,
+            "hint_induced_unsafe_execution": 0.0,
+            "user_confirmation_requested": 0.0,
+            "user_confirmation_accepted": 0.0,
+            "hint_authorized_after_confirmation": 0.0,
+            "hard_violation": 0.0,
+            "forget_leakage": 0.0,
+            "stale_reuse": 0.0
+          }
+        }
+      }
+    }
+  },
+  "overall_by_seed": {
+    "strict": [
+      {
+        "seed": 42,
+        "safe_task_success": 0.3371,
+        "missed_safe_action": 0.5371,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 43,
+        "safe_task_success": 0.3343,
+        "missed_safe_action": 0.54,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 44,
+        "safe_task_success": 0.3457,
+        "missed_safe_action": 0.5286,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      }
+    ],
+    "two-tier-hints": [
+      {
+        "seed": 42,
+        "safe_task_success": 0.3371,
+        "missed_safe_action": 0.5371,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 43,
+        "safe_task_success": 0.3343,
+        "missed_safe_action": 0.54,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 44,
+        "safe_task_success": 0.3457,
+        "missed_safe_action": 0.5286,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      }
+    ],
+    "two-tier-safe-fallback": [
+      {
+        "seed": 42,
+        "safe_task_success": 0.7657,
+        "missed_safe_action": 0.1086,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 43,
+        "safe_task_success": 0.7629,
+        "missed_safe_action": 0.1114,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      },
+      {
+        "seed": 44,
+        "safe_task_success": 0.7743,
+        "missed_safe_action": 0.1,
+        "hint_induced_unsafe_execution": 0.0,
+        "hard_violation": 0.0,
+        "forget_leakage": 0.0,
+        "stale_reuse": 0.0
+      }
+    ]
+  },
+  "overall": {
+    "strict": {
+      "safe_task_success": {
+        "mean": 0.339,
+        "std": 0.0059,
+        "ci95": [
+          0.3323,
+          0.3458
+        ]
+      },
+      "missed_safe_action": {
+        "mean": 0.5352,
+        "std": 0.0059,
+        "ci95": [
+          0.5285,
+          0.5419
+        ]
+      },
+      "hint_induced_unsafe_execution": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "hard_violation": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "forget_leakage": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "stale_reuse": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "two-tier-hints": {
+      "safe_task_success": {
+        "mean": 0.339,
+        "std": 0.0059,
+        "ci95": [
+          0.3323,
+          0.3458
+        ]
+      },
+      "missed_safe_action": {
+        "mean": 0.5352,
+        "std": 0.0059,
+        "ci95": [
+          0.5285,
+          0.5419
+        ]
+      },
+      "hint_induced_unsafe_execution": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "hard_violation": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "forget_leakage": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "stale_reuse": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "two-tier-safe-fallback": {
+      "safe_task_success": {
+        "mean": 0.7676,
+        "std": 0.0059,
+        "ci95": [
+          0.7609,
+          0.7744
+        ]
+      },
+      "missed_safe_action": {
+        "mean": 0.1067,
+        "std": 0.0059,
+        "ci95": [
+          0.0999,
+          0.1134
+        ]
+      },
+      "hint_induced_unsafe_execution": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "hard_violation": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "forget_leakage": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "stale_reuse": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  }
+}

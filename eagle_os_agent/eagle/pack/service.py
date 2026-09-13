@@ -13,6 +13,7 @@ from eagle.domain.scene import Scene
 from eagle.knowledge.revalidation import RevalidationService
 from eagle.preference.compiler import PreferenceCompiler
 from eagle.preference.resolver import PreferenceResolver
+from eagle.sensitive.filter import scrub_text as _scrub_text
 
 
 class PackService:
@@ -123,19 +124,18 @@ class PackService:
             selected = selected[:top_k]
 
             evidence = self._evidence(session, [knowledge.id for knowledge, _ in selected])
-            return PlannerContext(
-                constraints=constraints,
-                knowledge=tuple(
-                    {
-                        "id": knowledge.id,
-                        "type": knowledge.knowledge_type,
-                        "content": knowledge.content_json,
-                        "score": result.get("score"),
-                    }
-                    for knowledge, result in selected
-                ),
-                evidence=tuple(evidence),
-            )
+            knowledge_out: list[dict] = []
+            for knowledge, result in selected:
+                content = knowledge.content_json
+                if isinstance(content, dict):
+                    scrubbed_content, _ = _scrub_text(__import__("json").dumps(content, ensure_ascii=False))
+                    # keep structured content but scrub string leaves
+                    try:
+                        content = __import__("json").loads(scrubbed_content)
+                    except Exception:
+                        content = knowledge.content_json
+                knowledge_out.append({"id": knowledge.id, "type": knowledge.knowledge_type, "content": content, "score": result.get("score")})
+            return PlannerContext(constraints=constraints, knowledge=tuple(knowledge_out), evidence=tuple(evidence))
 
     @staticmethod
     def _scene_matches(memory_scene: dict, current_scene: dict) -> bool:

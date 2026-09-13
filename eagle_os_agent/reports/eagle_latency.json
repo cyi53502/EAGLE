@@ -1,0 +1,12 @@
+{
+  "n": 200,
+  "p50_ms": 106.17,
+  "p95_ms": 197.34,
+  "p99_ms": 293.75,
+  "max_ms": 395.01,
+  "backend": {
+    "embedding": "onnx",
+    "vector": "real"
+  },
+  "pass": true
+}

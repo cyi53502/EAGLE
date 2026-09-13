@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "name": "Embedding timeout",
+      "passed": true,
+      "detail": {
+        "first_state": "PENDING",
+        "retry": 1,
+        "pending": 1,
+        "final_mem0": true
+      }
+    },
+    {
+      "name": "Vector insert timeout",
+      "passed": true,
+      "detail": {
+        "first_state": "PENDING",
+        "final_state": "DONE"
+      }
+    },
+    {
+      "name": "Vector insert success then crash before writeback",
+      "passed": true,
+      "detail": {
+        "first_state": "PENDING",
+        "changed": 2,
+        "final_vec_count": 1
+      }
+    },
+    {
+      "name": "SQLite writeback failure",
+      "passed": true,
+      "detail": {
+        "first_state": "PENDING",
+        "knowledge_count": 1,
+        "final_count": 1
+      }
+    },
+    {
+      "name": "Duplicate vector convergence",
+      "passed": true,
+      "detail": {
+        "canonical": "vec-a",
+        "final_count": 1
+      }
+    },
+    {
+      "name": "Vector delete failure",
+      "passed": true,
+      "detail": {
+        "first_state": "PENDING",
+        "final_status": "FORGOTTEN"
+      }
+    },
+    {
+      "name": "Vector externally deleted",
+      "passed": true,
+      "detail": {
+        "reconcile_changed": 2,
+        "health_before": "degraded",
+        "health_after": "ok"
+      }
+    },
+    {
+      "name": "Worker restart mid-execution",
+      "passed": true,
+      "detail": {
+        "fresh_still_running": true,
+        "stale_reset": true,
+        "changed2": 1
+      }
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}

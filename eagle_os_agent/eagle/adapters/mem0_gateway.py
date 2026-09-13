@@ -1,6 +1,15 @@
 from dataclasses import dataclass
 
-from eagle.adapters.kylin.capabilities import probe_vector_capabilities
+from eagle.adapters.kylin.capabilities import (
+    REQUIRED_FOR_GATEWAY,
+    probe_vector_capabilities,
+)
+
+
+def _client_backend(memory, attr: str) -> str:
+    model = getattr(memory, attr, None)
+    client = getattr(model, "client", None)
+    return getattr(client, "backend", "unknown")
 
 
 @dataclass(frozen=True)
@@ -24,10 +33,22 @@ class Mem0Gateway:
             metric=memory.vector_store.distance_metric,
         )
         self.filter_capabilities = self.capability_report.supported
-        required = {"eq", "id_allowlist", "list_filter", "read_after_write", "delete"}
-        missing = required - self.filter_capabilities
+        missing = REQUIRED_FOR_GATEWAY - self.filter_capabilities
         if missing:
             raise RuntimeError(f"Kylin vector store is missing required capabilities: {sorted(missing)}")
+
+    @property
+    def backend(self) -> dict:
+        """Honest backend report: which clients are actually backing the gateway.
+
+        Values are the clients' ``backend`` tags ("shim", "real", or
+        "shim(fallback: <Exc>)"); harnesses/reports must surface this rather
+        than assuming the real SDK was used.
+        """
+        return {
+            "embedding": _client_backend(self.memory, "embedding_model"),
+            "vector": _client_backend(self.memory, "vector_store"),
+        }
 
     def upsert_knowledge(self, knowledge, index_key: str) -> IndexWriteResult:
         existing = self.find_by_index_key(knowledge.user_id, index_key)
@@ -72,6 +93,7 @@ class Mem0Gateway:
                 "id": {"in": list(eligible_memory_ids)},
             },
             top_k=limit,
+            threshold=0,
         )
         return list(response["results"])
 

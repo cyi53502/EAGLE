@@ -1,0 +1,136 @@
+{
+  "conditions": {
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "total_per_seed": 200,
+    "top_k": 5
+  },
+  "arms": {
+    "strict": [
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.59,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.585,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.605,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    ],
+    "two-tier-hints": [
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.59,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.585,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.605,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    ],
+    "two-tier-safe-fallback": [
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.59,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.19,
+        "correct_policy_block": 0.055,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.59,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.585,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.195,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.585,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      },
+      {
+        "eligible_recall": 1.0,
+        "safe_task_success": 0.605,
+        "unsafe_execution": 0.0,
+        "missed_safe_action": 0.175,
+        "correct_policy_block": 0.03,
+        "governed_visibility": 0.6036,
+        "knowledge_recall": 0.6036,
+        "task_success": 0.605,
+        "hint_assisted_safe_task_success": 0.0,
+        "hint_triggered_revalidation": 0.0,
+        "hint_induced_unsafe_execution": 0.0
+      }
+    ]
+  }
+}

@@ -50,6 +50,10 @@ def sha256_expansion_vector(text: str, dim: int) -> list[float]:
 class ShimEmbeddingClient:
     """KylinEmbeddingClient shim (768-dim gte-base parity)."""
 
+    # honest backend tag: reports stay truthful even when the client is
+    # constructed directly instead of through make_embedding_client()
+    backend = "shim"
+
     def __init__(self, dim: int = 768):
         self._dim = dim
 

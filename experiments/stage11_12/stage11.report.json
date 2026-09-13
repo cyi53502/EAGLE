@@ -1,0 +1,256 @@
+{
+  "arms": {
+    "A": {
+      "Hard Constraint Violation Rate": {
+        "mean": 0.3637,
+        "std": 0.0601,
+        "ci95": [
+          0.2956,
+          0.4317
+        ]
+      },
+      "Forget Leakage Rate": {
+        "mean": 0.5,
+        "std": 0.0,
+        "ci95": [
+          0.5,
+          0.5
+        ]
+      },
+      "Preference False Promotion Rate": {
+        "mean": 0.6367,
+        "std": 0.0029,
+        "ci95": [
+          0.6334,
+          0.6399
+        ]
+      },
+      "Stale Knowledge Reuse Rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Conflict Resolution Accuracy": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Knowledge Precision": {
+        "mean": 0.3854,
+        "std": 0.0,
+        "ci95": [
+          0.3854,
+          0.3854
+        ]
+      },
+      "Knowledge Recall@5": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Preference Precision": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Traceability Coverage": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Downstream Task Success": {
+        "mean": 0.8817,
+        "std": 0.0029,
+        "ci95": [
+          0.8784,
+          0.8849
+        ]
+      }
+    },
+    "B": {
+      "Hard Constraint Violation Rate": {
+        "mean": 0.3637,
+        "std": 0.0601,
+        "ci95": [
+          0.2956,
+          0.4317
+        ]
+      },
+      "Forget Leakage Rate": {
+        "mean": 0.5,
+        "std": 0.0,
+        "ci95": [
+          0.5,
+          0.5
+        ]
+      },
+      "Preference False Promotion Rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Stale Knowledge Reuse Rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Conflict Resolution Accuracy": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Knowledge Precision": {
+        "mean": 0.5631,
+        "std": 0.0065,
+        "ci95": [
+          0.5557,
+          0.5705
+        ]
+      },
+      "Knowledge Recall@5": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Preference Precision": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Traceability Coverage": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Downstream Task Success": {
+        "mean": 0.8017,
+        "std": 0.0153,
+        "ci95": [
+          0.7844,
+          0.819
+        ]
+      }
+    },
+    "C": {
+      "Hard Constraint Violation Rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Forget Leakage Rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Preference False Promotion Rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Stale Knowledge Reuse Rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "Conflict Resolution Accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Knowledge Precision": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Knowledge Recall@5": {
+        "mean": 0.6036,
+        "std": 0.0,
+        "ci95": [
+          0.6036,
+          0.6036
+        ]
+      },
+      "Preference Precision": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Traceability Coverage": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "Downstream Task Success": {
+        "mean": 0.5933,
+        "std": 0.0104,
+        "ci95": [
+          0.5816,
+          0.6051
+        ]
+      }
+    }
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "total_per_seed": 200
+}

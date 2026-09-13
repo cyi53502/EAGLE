@@ -222,6 +222,7 @@ def test_gateway_search_uses_active_vector_id_allowlist():
                 "id": {"in": ["vector-a", "vector-b"]},
             },
             "top_k": 5,
+            "threshold": 0,
         }
     ]
 

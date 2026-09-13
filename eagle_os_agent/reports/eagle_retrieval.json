@@ -1,0 +1,9 @@
+{
+  "eligible_recall@5": 1.0,
+  "raw_k": 1,
+  "backend": {
+    "embedding": "onnx",
+    "vector": "real"
+  },
+  "pass": true
+}

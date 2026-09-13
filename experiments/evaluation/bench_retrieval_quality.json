@@ -1,0 +1,50 @@
+{
+  "seed": 42,
+  "total": 200,
+  "arm": "C",
+  "arms": {
+    "C_shim": {
+      "Hard Constraint Violation Rate": 0.0,
+      "Forget Leakage Rate": 0.0,
+      "Preference False Promotion Rate": 0.0,
+      "Stale Knowledge Reuse Rate": 0.0,
+      "Conflict Resolution Accuracy": 1.0,
+      "Knowledge Precision": 1.0,
+      "Knowledge Recall@5": 0.6036,
+      "Preference Precision": 1.0,
+      "Traceability Coverage": 1.0,
+      "Downstream Task Success": 0.59,
+      "Eligible Recall@5": 1.0
+    },
+    "C_real": {
+      "Hard Constraint Violation Rate": 0.0,
+      "Forget Leakage Rate": 0.0,
+      "Preference False Promotion Rate": 0.0,
+      "Stale Knowledge Reuse Rate": 0.0,
+      "Conflict Resolution Accuracy": 1.0,
+      "Knowledge Precision": 1.0,
+      "Knowledge Recall@5": 0.6036,
+      "Preference Precision": 1.0,
+      "Traceability Coverage": 1.0,
+      "Downstream Task Success": 0.59,
+      "Eligible Recall@5": 1.0
+    }
+  },
+  "real_backend": {
+    "embedding": "onnx(fallback: no kylin-ai-runtime socket at /tmp/.kylin-ai-runtime-unix/0/core-textembedding.sock)",
+    "vector": "real"
+  },
+  "delta_real_minus_shim": {
+    "Hard Constraint Violation Rate": 0.0,
+    "Forget Leakage Rate": 0.0,
+    "Preference False Promotion Rate": 0.0,
+    "Stale Knowledge Reuse Rate": 0.0,
+    "Conflict Resolution Accuracy": 0.0,
+    "Knowledge Precision": 0.0,
+    "Knowledge Recall@5": 0.0,
+    "Preference Precision": 0.0,
+    "Traceability Coverage": 0.0,
+    "Downstream Task Success": 0.0,
+    "Eligible Recall@5": 0.0
+  }
+}
